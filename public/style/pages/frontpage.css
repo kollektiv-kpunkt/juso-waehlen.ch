@@ -1,0 +1,69 @@
+#heroine {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--main);
+    position: relative;
+    transition: 0.15s linear background-color;
+}
+
+#heroine img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    mix-blend-mode: difference;
+}
+
+#heroine div.claim {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    width: calc(100vw - 4rem);
+    height: calc(100vh - 2rem);
+}
+
+#heroine div.claim svg {
+    height: 100%;
+    width: fit-content;
+    max-width: 100%;
+}
+
+#heroine div.claim#bg svg path {
+    fill: var(--accent);
+    transition: 0.3s linear fill;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+@media screen and (max-width: 680px) {
+    #heroine div.claim {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        transform: unset;
+        width: calc(100vw - 1rem);
+        height: calc(100vh - 3rem);
+        display: flex;
+    }
+    
+    #heroine div.claim svg {
+        transform: rotate(-90deg);
+        margin: auto;
+    }
+
+    #heroine div.claim#fg {
+        z-index: 3;
+    }
+    
+    #heroine div.claim#fg svg path {
+        fill: var(--accent);
+        transition: 0.3s linear fill;
+        opacity: 1;
+    }
+}

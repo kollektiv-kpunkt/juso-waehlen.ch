@@ -1,0 +1,107 @@
+div#main-navbar {
+    position: fixed;
+    left: 100%;
+    top: 100%;
+    transform: rotate(-90deg) translateY(-100%);
+    transform-origin: left top;
+    background-color: var(--accent);
+    color: var(--white);
+    z-index: 100;
+    width: 100vh;
+    display: flex;
+    transition: 0.5s cubic-bezier(0.04, 0.69, 0.24, 1) transform, 0.3s linear background-color;
+    height: 2rem;
+}
+
+#main-nav-inner {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: 0.2rem auto;
+}
+
+#main-nav-inner svg {height: 100%;}
+
+#main-nav-inner svg, #main-nav-inner #nav-menu-button {
+    margin: auto 0;
+    font-family: "greve";
+    text-transform: uppercase;
+    display: flex;
+    line-height: 0.8;
+    cursor: pointer;
+}
+
+#main-nav-inner #nav-menu-button:after {
+    font-family: "FontAwesome";
+    content: "\f077";
+    font-weight: 900;
+    font-size: 0.75rem;
+    margin: auto;
+    line-height: 0.8;
+    margin-left: 0.25rem;
+}
+
+html.menuopen #main-nav-inner #nav-menu-button:after {
+    content: "\f078";
+}
+
+div#main-nav-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--accent);
+    width: 100%;
+    transition: 0.3s linear background-color;
+}
+
+#main-nav-content {
+    padding: 1rem;
+}
+
+a.menu-item {
+    display: block;
+    font-family: "greve";
+    font-size: 3rem;
+    font-weight: 900;
+    text-decoration: none;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+#cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+    visibility: hidden;
+    opacity: 0;
+    background-color: var(--intense);
+    mix-blend-mode: darken;
+    transition: 0.25s linear visibility, 0.25s linear opacity;
+}
+
+html.menuopen #cover {
+    visibility: visible;
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 680px) {
+    div#main-navbar {
+        transform: rotate(0) translateY(0%);
+        bottom: 0;
+        left: 0;
+        top: unset;
+        width: 100vw;
+    }
+
+    a.menu-item {
+        font-size: 1.5rem;
+    }
+
+    #main-nav-content {
+        padding: 1rem 0.5rem;
+    }
+}

@@ -1,0 +1,45 @@
+:root {
+    --black: #000000;
+    --red: #ED2E38;
+    --white: #ffffff;
+    --turquoise: #2AD6CD;
+    --yellow: #FFFF00;
+    --blue: #0000FF;
+    --titan: #E5E5FF;
+    --orange: #FF8A00;
+    --violet: #2A0083;
+    --azure: #0075FF;
+    --lightgreen: #C0F189;
+    --lime: #B9FF00;
+    --darkgreen: #002D0A;
+    --intense: #4600FF;
+    --pink: #ECBDF6;
+}
+
+html.ds1 {
+    --main: var(--black);
+    --accent: var(--red);
+    --mainneg: var(--white);
+    --accentneg: var(--turquoise);
+}
+
+html.ds2 {
+    --main: var(--yellow);
+    --accent: var(--black);
+    --mainneg: var(--blue);
+    --accentneg: var(--titan);
+}
+
+html.ds3 {
+    --main: var(--orange);
+    --accent: var(--violet);
+    --mainneg: var(--azure);
+    --accentneg: var(--lightgreen);
+}
+
+html.ds4 {
+    --main: var(--lime);
+    --accent: var(--darkgreen);
+    --mainneg: var(--intense);
+    --accentneg: var(--pink);
+}
