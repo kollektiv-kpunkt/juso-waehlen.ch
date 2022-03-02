@@ -5,7 +5,8 @@ get_header()
 ?>
 
 <div id="heroine">
-    <img src="<?= get_template_directory_uri() ?>/public/img/geruest.png" alt="Baugerüst" id="geruest">
+    <img src="<?= get_template_directory_uri() ?>/public/img/geruest.png" alt="Baugerüst" class="geruest" id="top">
+    <img src="<?= get_template_directory_uri() ?>/public/img/geruest.png" alt="Baugerüst" class="geruest" id="bottom">
     <div class="claim" id="bg">
         <?=
         file_get_contents(__DIR__ . "/public/img/frontpage/claim.svg");

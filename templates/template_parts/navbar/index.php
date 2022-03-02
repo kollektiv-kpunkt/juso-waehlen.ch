@@ -1,8 +1,10 @@
 <div id="main-navbar">
     <div id="main-nav-inner">
-        <?php
-        echo(file_get_contents(__DIR__ . "/img/logo.svg"));
-        ?>
+        <a href="/">
+            <?php
+            echo(file_get_contents(__DIR__ . "/img/logo.svg"));
+            ?>
+        </a>
         <div id="nav-menu-button">
             Menu
         </div>

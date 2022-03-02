@@ -1,0 +1,34 @@
+.juso-details {
+    position: relative;
+    margin-top: 2.5rem;
+}
+
+.juso-details .juso-details-container {
+    overflow: hidden;
+    transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) max-height;
+}
+
+.juso-details .juso-details-container.small {
+    -webkit-mask-image: -webkit-gradient(linear, left 40%, left 75%, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    max-height: 6rem;
+}
+.juso-details .juso-details-container.medium {
+    -webkit-mask-image: -webkit-gradient(linear, left 60%, left 85%, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    max-height: 10rem;
+}
+.juso-details .juso-details-container.large {
+    -webkit-mask-image: -webkit-gradient(linear, left 80%, left 90%, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    max-height: 14rem;
+}
+
+.juso-details .juso-details-container.open {
+    -webkit-mask-image: -webkit-gradient(linear, left top, left 90%, from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
+}
+
+.juso-details-read-more {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-decoration: underline;
+    cursor: pointer;
+}

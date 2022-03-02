@@ -105,11 +105,14 @@ function my_acf_settings_url( $url ) {
     return MY_ACF_URL;
 }
 
-add_filter('acf/settings/save_json', 'set_acf_json_save_folder');
-function set_acf_json_save_folder( $path ) {
+add_filter('acf/settings/save_json', 'my_acf_json_save_point');
+ 
+function my_acf_json_save_point( $path ) {
     $path = MY_ACF_PATH . '/acf-json';
     return $path;
 }
+
+
 add_filter('acf/settings/load_json', 'add_acf_json_load_folder');
 function add_acf_json_load_folder( $paths ) {
     unset($paths[0]);
@@ -178,3 +181,112 @@ function filter_rest_gemeinde_query( $args, $request ) {
 }   
 // add the filter 
 add_filter( "rest_kandidierende_query", 'filter_rest_gemeinde_query', 10, 2 ); 
+
+
+class all_terms
+{
+    public function __construct()
+    {
+        $version = '2';
+        $namespace = 'wp/v' . $version;
+        $base = 'all-terms';
+        register_rest_route($namespace, '/' . $base, array(
+            'methods' => 'GET',
+            'callback' => array($this, 'get_all_terms'),
+        ));
+    }
+
+    public function get_all_terms($object)
+    {
+        $return = array();
+        $args = array(
+            'public' => true,
+            '_builtin' => false
+        );
+        $output = 'names'; // or objects
+        $operator = 'and'; // 'and' or 'or'
+        $taxonomies = get_taxonomies($args, $output, $operator);
+        foreach ($taxonomies as $key => $taxonomy_name) {
+            if($taxonomy_name = $_GET['term']){
+            $return = get_terms($taxonomy_name);
+        }
+        }
+        return new WP_REST_Response($return, 200);
+    }
+}
+
+
+
+/* Shortcodes */
+
+function juso_kandimap_shortcode($atts) { 
+    ob_start();
+    get_juso_partial("kandimap");
+    return ob_get_clean();
+
+} 
+
+add_shortcode('juso-kandimap', 'juso_kandimap_shortcode'); 
+
+function juso_sektionenmap_shortcode($atts) { 
+    ob_start();
+    get_juso_partial("sektionenmap");
+    return ob_get_clean();
+
+} 
+
+add_shortcode('juso-sektionenmap', 'juso_sektionenmap_shortcode'); 
+
+
+function juso_kandis_shortcode($atts) { 
+    global $post;
+    $atts = shortcode_atts(array(
+        "sektion" => $post->post_name,
+    ), $atts);
+    ob_start();
+    get_template_part("templates/template_parts/kandis/index", null, $atts);
+    return ob_get_clean();
+
+} 
+
+add_shortcode('juso-kandis', 'juso_kandis_shortcode'); 
+
+
+function juso_bestellformular_shortcode($atts) { 
+    global $post;
+    $atts = shortcode_atts(array(
+        "sektion" => $post->post_name,
+    ), $atts);
+    wp_enqueue_style( 'notyf', "https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css" );
+    wp_enqueue_style( 'bestellformular', get_template_directory_uri() . '/templates/template_parts/bestellformular/style.css' );
+    wp_enqueue_script( 'notyf', "https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js", array('jquery'), '1.0.0', false);
+    wp_enqueue_script( 'bestellformular', get_template_directory_uri() . '/templates/template_parts/bestellformular/script.js', array('jquery'), '1.0.0', false);
+    ob_start();
+    get_template_part("templates/template_parts/bestellformular/index", null, $atts);
+    return ob_get_clean();
+
+} 
+
+add_shortcode('juso-bestellformular', 'juso_bestellformular_shortcode'); 
+
+
+/* Blocks */
+
+add_action('acf/init', 'juso_init_block_types');
+function juso_init_block_types() {
+
+    // Check function exists.
+    if( function_exists('acf_register_block_type') ) {
+
+        // register a testimonial block.
+        acf_register_block_type(array(
+            'name'              => 'details',
+            'title'             => __('Details'),
+            'description'       => __('Details block for expandable details.'),
+            'render_template'   => 'templates/blocks/details/details.php',
+            'category'          => 'formatting',
+            'icon'              => 'info-outline',
+            'keywords'          => array( 'details', 'more' ),
+        ));
+    }
+}

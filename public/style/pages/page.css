@@ -1,0 +1,88 @@
+html.ds1 #main-content {
+    --bg: var(--black);
+    --text: var(--white);
+    --pageaccent: var(--red);
+    --pageaccentneg: var(--turquoise);
+}
+
+html.ds2 #main-content {
+    --bg: var(--blue);
+    --text: var(--white);
+    --pageaccent: var(--yellow);
+    --pageaccentneg: var(--black);
+}
+
+html.ds3 #main-content {
+    --bg: var(--violet);
+    --text: var(--white);
+    --pageaccent: var(--orange);
+    --pageaccentneg: var(--lightgreen);
+}
+
+html.ds4 #main-content {
+    --bg: var(--darkgreen);
+    --text: var(--white);
+    --pageaccent: var(--intense);
+    --pageaccentneg: var(--lime);
+}
+
+
+#main-content {
+    width: calc(100vw - 2rem);
+    position: relative;
+    min-height: 100vh;
+    z-index: 2;
+}
+
+@media screen and (max-width: 680px) {
+    #main-content {
+        width: 100%;
+        padding-bottom: 2rem;
+    }
+}
+
+#bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg);
+    z-index: 1;
+}
+
+#bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.16;
+    mix-blend-mode: exclusion;
+}
+
+
+#page-container {
+    position: relative;
+    z-index: 4;
+    width: 85%;
+    min-height: calc(100vh - 5rem);
+    color: var(--text);
+    margin: 0 auto;
+    padding: 2.5rem 0;
+}
+
+#page-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(90deg) translateY(-100%);
+    transform-origin: top left;
+    z-index: 3;
+    height: 0.75em;
+    color: var(--pageaccent);
+    opacity: 0.3;
+    font-size: 4.5rem;
+    mix-blend-mode: lighten;
+}

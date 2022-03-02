@@ -2,19 +2,29 @@
 
 html {font-size: 281.3%;} /*45px*/
 
-@media screen and (max-width: 1180px) {html {font-size: 225%; /* 36px*/}}
-@media screen and (max-width: 980px) {html {font-size: 200%; /* 32px*/}}
-@media screen and (max-width: 680px) {html {font-size: 175%; /* 28px*/}}
+@media screen and (max-width: 1920px) {html {font-size: 225%; /* 36px*/}}
+@media screen and (max-width: 1180px) {html {font-size: 200%; /* 32px*/}}
+@media screen and (max-width: 980px) {html {font-size: 175%; /* 28px*/}}
+@media screen and (max-width: 680px) {html {font-size: 150%; /* 24px*/}}
+@media screen and (max-width: 480px) {html {font-size: 125%; /* 20px*/}}
+@media screen and (max-width: 360px) {html {font-size: 112.5%; /* 18px*/}}
 
 
 body {
   font-family: 'MetaSerif', sans-serif;
   font-weight: 300;
   line-height: 1.2;
-  color: #000000;
+  color: var(--black);
 }
 
-p {margin-bottom: 1rem;}
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+P:last-child {
+  margin-bottom: 0;
+}
 
 h1, h2, h3, h4, h5 {
   font-family: 'greve', sans-serif;
@@ -23,6 +33,7 @@ h1, h2, h3, h4, h5 {
   margin-bottom: max(0.25em, 0.15rem);
   margin-top: 0;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 h1 {font-size: 3.052rem;}

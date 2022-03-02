@@ -1,0 +1,31 @@
+.button {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.5em 0.7em;
+    font-family: "greve";
+    height: 0.72em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.03em;
+    line-height: 0.8;
+    text-decoration: none;
+    background-color: var(--buttonaccent);
+    color: var(--buttontext);
+    border: 0.15em solid var(--buttonborder);
+
+    --buttonaccent: var(--accent);
+    --buttontext: var(--main);
+    --buttonborder: var(--buttontext);
+    transition: 0.125s linear opacity, 0.125s ease-in-out transform;
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: 0.9;
+    transform-origin: center center;
+    transform: scale(1.02);
+}
+
+button.button {
+    height: auto;
+}

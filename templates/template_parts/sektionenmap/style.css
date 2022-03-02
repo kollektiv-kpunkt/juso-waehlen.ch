@@ -1,0 +1,17 @@
+#sektionenmap-outer {
+    /* margin-top: 2rem; */
+    margin-bottom: 2rem;
+}
+
+#sektionenmap-inner {
+    max-width: 750px;
+    margin: auto;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: unset;
+}

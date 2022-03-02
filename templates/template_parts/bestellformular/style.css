@@ -1,0 +1,211 @@
+.bestellformular {
+    margin-top: 3rem;
+}
+
+.step {
+    display: none;
+    margin-top: 1rem;
+}
+
+.step.visible {
+    display: block
+}
+
+.productgrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 1rem;
+}
+
+.productgrid .product {
+    width: calc(100% / var(--numrow) - (1rem / (var(--numrow)) * (var(--numrow) - 1 )));
+    --numrow: 5;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    background-color: var(--main);
+    border-radius: 4px;
+    filter: brightness(0.8);
+    transition: 0.5s cubic-bezier(0, 0, 0.6, 1) filter;
+}
+
+@media screen and (max-width: 1920px) {
+    .productgrid .product { --numrow: 4; }
+}
+
+@media screen and (max-width: 1350px) {
+    .productgrid .product { --numrow: 3; }
+}
+
+@media screen and (max-width: 980px) {
+    .productgrid .product { --numrow: 2; }
+}
+
+@media screen and (max-width: 480px) {
+    .productgrid .product { --numrow: 1; }
+}
+
+.productgrid .product:hover, .productgrid .product.selected  {
+    filter: brightness(1);
+}
+
+.productgrid .product .product-img {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.productgrid .product .product-img img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: 0.5s cubic-bezier(0, 0, 0.6, 1) filter;
+}
+
+.productgrid .product .product-img:hover img, .productgrid .product.selected .product-img img  {
+    filter: grayscale(0);
+}
+
+.productgrid .product .product-description {
+    color: var(--mainneg);
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+.productgrid .product .picker-group {
+    display: flex;
+}
+
+.productgrid .product .product-picker {
+    width: 60%;
+    box-sizing: border-box;
+    background-color: var(--mainneg);
+    border-style: solid;
+    border-color: var(--accent);
+    padding: 0.25rem 0.4rem;
+    color: var(--main);
+}
+
+.productgrid .product .picker-group .picker-toggle {
+    background-color: var(--mainneg);
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.productgrid .product .picker-group .picker-toggle.picker-remove {
+    background-color: var(--accent);
+}
+
+.productgrid .product .picker-group .picker-toggle i {
+    color: var(--main);
+    margin: auto;
+    font-size: 0.5rem;
+}
+
+.productgrid .product .picker-group .picker-toggle.picker-remove i {
+    color: var(--accentneg);
+}
+
+.product .product-picker::-webkit-outer-spin-button,
+.product .product-picker::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.product .product-picker {
+  -moz-appearance: textfield;
+}
+
+.step-button {
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    box-sizing: border-box;
+}
+
+.notyf__message {
+    font-size: 0.5rem;
+}
+
+/* PERSONAL DETAILS */
+
+.details-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.details-grid .input-group {
+    width: calc(100% / var(--numrow) - (1rem / (var(--numrow)) * (var(--numrow) - 1 )));
+    --numrow: 2;
+}
+
+@media screen and (max-width: 980px) {
+    .details-grid .input-group {
+        --numrow: 1;
+    }
+}
+
+.details-grid .input-group label {
+    display: block;
+}
+
+.details-grid .input-group input[type="text"] {
+    margin-top: 0.5rem;
+    width: 100%;
+    background-color: transparent;
+    border: transparent;
+    border-bottom: 4px solid var(--accentneg);
+    color: var(--accentneg);
+    font-size: 0.5rem;
+    outline: none;
+}
+
+.input-group.fullwidth {
+    width: 100%;
+}
+
+.input-group.checkbox label {
+    display: inline;
+    cursor: pointer;
+}
+
+.input-group.checkbox input[type="checkbox"]{
+    display: none;
+}
+
+.input-group.checkbox input[type="checkbox"] + label:before {
+    content: "\f0c8";
+    font-family: FontAwesome;
+    padding-right: 0.4rem;
+}
+
+.input-group.checkbox input[type="checkbox"]:checked + label:before {
+    content: "\f14a";
+}
+
+button.button[type="submit"] {
+    width: 100%;
+    margin-top: 1rem;
+    box-sizing: border-box;
+}
+
+/* Thank you */
+.thank-you {
+    display: none;
+    width: 100%;
+    padding: 2rem;
+    background-color: var(--accentneg);
+    color: var(--accent);
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}

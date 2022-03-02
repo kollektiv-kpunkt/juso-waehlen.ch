@@ -1,0 +1,159 @@
+#kandimap-outer {
+    /* margin-top: 2rem; */
+    margin-bottom: 2rem;
+}
+
+#kandimap-outer p#legend {
+    margin-top: 1rem;
+    font-size: max(12px, 0.6rem);
+    text-align: center;
+    font-style: italic;
+}
+
+#map-inner {
+    max-width: 750px;
+    height: 1080px;
+    max-height: 75vh;
+    display: flex;
+    margin: auto;
+}
+
+#map-inner svg {
+    width: 100%;
+    max-height: 100%;
+}
+
+.kandigrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    position: relative;
+    column-gap: 1rem;
+    row-gap: 1rem;
+}
+
+.kandigrid .kandi {
+    width: calc(100% / var(--numrow) - (1rem / (var(--numrow)) * (var(--numrow) - 1 )));
+
+    --numrow: 4;
+
+    transition: 0.25s linear opacity;
+}
+
+@media screen and (max-width: 1650px) {
+    .kandigrid .kandi {--numrow: 3;}
+}
+
+@media screen and (max-width: 1080px) {
+    .kandigrid .kandi {--numrow: 2;}
+}
+
+@media screen and (max-width: 480px) {
+
+    .kandi .kandi-portrait {
+        max-width: 400px;
+    }
+
+    .kandigrid .kandi {
+        width: fit-content;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .kandigrid {
+        row-gap: 2rem;
+    }
+}
+
+.kandigrid.kandiopen .kandi {
+    opacity: 0.2;
+}
+
+.kandigrid.kandiopen .kandi.open {
+    opacity: 1;
+}
+
+.kandi .kandi-portrait {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.kandi-info-container {
+    position: absolute;
+    left: calc(100% / 85 * 15 * -1 / 2);
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    width: calc(100% / 85 * 100);
+    transition: 0.5s cubic-bezier(0, 0, 0.6, 1) max-height;
+    z-index: 100;
+}
+
+.kandi-infos-placeholder {
+    transition: 0.5s cubic-bezier(0, 0, 0.6, 1) padding-bottom
+}
+
+.kandi .kandi-infos {
+    margin-top: 1rem;
+    padding: 2rem 7vw;
+    background: var(--accentneg);
+    color: var(--accent);
+}
+
+.kandi.open .kandi-infos {
+    max-height: 100vh;
+}
+
+.kandi .kandi-name {
+    font-size: 1.5rem;
+    font-family: 'MetaSerif', serif;
+    text-transform: unset;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0;
+}
+
+
+.kandi .kandi-name.longname {
+    font-size: 1.4rem;
+}
+
+@media screen and (min-width: 1921px) {
+    .kandi .kandi-name.longname {
+        font-size: 1.15rem;
+    }
+}
+
+.kandi .kandi-gemeinde {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+}
+
+.kandi .kandi-infos .kandi-info-name {
+    margin-bottom: 0.25rem;
+}
+
+.kandi .kandi-infos .kandi-info-name {
+    font-size: 4rem;
+}
+
+.kandi .kandi-infos .kandi-info-subtitle {
+    font-size: 0.75rem;
+}
+
+.kandi .kandi-infos .kandi-info-quote {
+    font-style: italic;
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.kandi .kandi-infos .kandi-info-close {
+    line-height: 0.7;
+    position: absolute;
+    top: 2rem;
+    right: 7.5%;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
